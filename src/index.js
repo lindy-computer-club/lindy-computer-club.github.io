@@ -28,7 +28,7 @@ function checkAnswer(x) {
     } else {
       reset();
       incorrect += 1;
-      results.innerText = incorrect;
+      incorrect_ans.innerText = incorrect;
       return false;
     }
   }
@@ -136,6 +136,7 @@ var myQuestions = [
 myQuestions = shuffleArray(myQuestions);
 var finished = false;
 var results = document.getElementById("results");
+var incorrect_ans = document.getElementById("incorrect_ans");
 var answerrow = document.getElementById("ans");
 var correct = 0;
 var incorrect = 0;
