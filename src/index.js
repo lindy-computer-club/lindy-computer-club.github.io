@@ -6,16 +6,12 @@ const question = document.getElementById("q");
 /* Randomize array in-place using Durstenfeld shuffle algorithm */
 function shuffleArray(array) {
   for (var i = array.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
   }
   return array;
-}
-
-function randInt(low, high) {
-  return Math.floor(Math.random() * high) + low - 1;
 }
 
 submitA.addEventListener("click", submitAA);
@@ -25,24 +21,44 @@ submitC.addEventListener("click", submitCA);
 function checkAnswer(x) {
   if (!finished) {
     if (x === myQuestions[cur].correctAnswer) {
-      results.innerText = "Correct";
+      correct += 1;
+      results.innerText = correct;
+      reset();
+      return true;
     } else {
-      results.innerText = "Incorrect";
+      reset();
+      incorrect += 1;
+      results.innerText = incorrect;
+      return false;
     }
-    reset();
   }
 }
 
 function submitAA() {
-  checkAnswer("a");
+  selected = checkAnswer("a");
+  if (selected) {
+    submitA.classList.add("correct");
+  } else {
+    submitA.classList.add("incorrect");
+  }
 }
 
 function submitBA() {
-  checkAnswer("b");
+  selected = checkAnswer("b");
+  if (selected) {
+    submitB.classList.add("correct");
+  } else {
+    submitB.classList.add("incorrect");
+  }
 }
 
 function submitCA() {
-  checkAnswer("c");
+  selected = checkAnswer("c");
+  if (selected) {
+    submitC.classList.add("correct");
+  } else {
+    submitC.classList.add("incorrect");
+  }
 }
 
 function reset() {
@@ -65,7 +81,27 @@ function completeQuiz() {
   submitA.remove();
   submitB.remove();
   submitC.remove();
-  question.innerText = "Finished quiz";
+  question.innerText = "Congratulations!";
+  answerrow.classList.remove("row");
+  const ad_div = document.createElement("div");
+  ad_div.classList.add("col", "result");
+  answerrow.appendChild(ad_div);
+  const ad = document.createElement("a");
+  ad.innerText = "Discord Server Link";
+  ad.setAttribute("href", "https://discord.gg/qVYCfzus5C");
+  ad_div.appendChild(ad);
+  /* 
+  If you're looking at this, congratulations! You can get the Minecraft server IP.
+  Except we don't have it yet, so you can look here later.
+
+  const ad_div2 = document.createElement("div");
+  ad_div2.classList.add("col", "result");
+  answerrow.appendChild(ad_div2);
+  const ad2 = document.createElement("a");
+  ad2.innerText = "Minecraft Server IP";
+  ad2.setAttribute("href", "#");
+  ad_div2.appendChild(ad2);
+  */
   finished = true;
 }
 var myQuestions = [
@@ -79,11 +115,11 @@ var myQuestions = [
     correctAnswer: "c"
   },
   {
-    question: "I _____",
+    question: "This is a sample question.",
     answers: {
-      a: "dead",
-      b: "forgor 💀",
-      c: "remember the 21st night of september"
+      a: "This is an incorrect sample answer.",
+      b: "This answer should be clicked on.",
+      c: "This is not the right answer."
     },
     correctAnswer: "b"
   },
@@ -99,7 +135,10 @@ var myQuestions = [
 ];
 myQuestions = shuffleArray(myQuestions);
 var finished = false;
-var used = [];
 var results = document.getElementById("results");
+var answerrow = document.getElementById("ans");
+var correct = 0;
+var incorrect = 0;
 var cur = -1;
+var selected;
 reset();

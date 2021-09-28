@@ -12,6 +12,10 @@
       integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
       crossorigin="anonymous"
     />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
@@ -29,7 +33,14 @@
         <button id="2" class="col-lg a"></button>
         <button id="3" class="col-lg a"></button>
       </div>
-      <div>Your previous answer was -> <span id="results"></span></div>
+      <div id="ans" class="row center">
+        <div id="correct" class="col result">
+          Correct: <span id="results">0</span>
+        </div>
+        <div id="incorrect" class="col result">
+          Incorrect: <span id="incorrect_ans">0</span>
+        </div>
+      </div>
     </div>
   </body>
 </html>

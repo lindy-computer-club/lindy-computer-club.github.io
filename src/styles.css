@@ -1,11 +1,50 @@
+@keyframes correct {
+  from {
+    background-color: lightgrey;
+  }
+  50% {
+    background-color: mediumseagreen;
+  }
+  to {
+    background-color: lightgrey;
+  }
+}
+@keyframes incorrect {
+  from {
+    background-color: lightgrey;
+  }
+  50% {
+    background-color: red;
+  }
+  to {
+    background-color: lightgrey;
+  }
+}
 body {
-    font-family: sans-serif;
+  font: Montserrat;
 }
 #q {
-    text-align: center;
-    font-size: 8vh 4vw;
+  text-align: center;
+  font-size: 8vh 4vw;
+}
+#ans {
+  text-align: center;
 }
 .a {
-    font-size: 4vh;
+  font-size: 4vh;
+  height: 15vh;
 }
-  
+.result {
+  font-size: 4vh;
+  border-style: solid;
+  border-width: 1px;
+  background-color: lightgray;
+}
+.correct {
+  animation-duration: 1s;
+  animation-name: correct;
+}
+.incorrect {
+  animation-duration: 1s;
+  animation-name: incorrect;
+}
