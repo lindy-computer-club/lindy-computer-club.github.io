@@ -28,7 +28,7 @@ function checkAnswer(x) {
     } else {
       reset();
       incorrect += 1;
-      results.innerText = incorrect;
+      incorrect_ans.innerText = incorrect;
       return false;
     }
   }
@@ -90,10 +90,14 @@ function completeQuiz() {
   ad.innerText = "Discord Server Link";
   ad.setAttribute("href", "https://discord.gg/qVYCfzus5C");
   ad_div.appendChild(ad);
+  const reload = document.createElement("a");
+  reload.innerText = "Restart?";
+  reload.classList.add("reset");
+  reload.setAttribute("href", "");
+  answerrow.appendChild(reload);
   /* 
   If you're looking at this, congratulations! You can get the Minecraft server IP.
   Except we don't have it yet, so you can look here later.
-
   const ad_div2 = document.createElement("div");
   ad_div2.classList.add("col", "result");
   answerrow.appendChild(ad_div2);
@@ -115,13 +119,13 @@ var myQuestions = [
     correctAnswer: "c"
   },
   {
-    question: "This is a sample question.",
+    question: "Which programming language is real?",
     answers: {
-      a: "This is an incorrect sample answer.",
-      b: "This answer should be clicked on.",
-      c: "This is not the right answer."
+      a: "Understand",
+      b: "Hexcells",
+      c: "Brainf--k"
     },
-    correctAnswer: "b"
+    correctAnswer: "c"
   },
   {
     question: 'What programming language is \nprint("Hello, world!")',
@@ -131,11 +135,39 @@ var myQuestions = [
       c: "JavaScript"
     },
     correctAnswer: "a"
+  },
+  {
+    question: "What is the HTTP response code for Not Found?",
+    answers: {
+      a: "400",
+      b: "404",
+      c: "418"
+    },
+    correctAnswer: "b"
+  },
+  {
+    question: "What is the file extention for a text file?",
+    answers: {
+      a: ".txt",
+      b: "There is none!",
+      c: ".text"
+    },
+    correctAnswer: "a"
+  },
+  {
+    question: "Who is considered to be the founding father of computers?",
+    answers: {
+      a: "Bill Gates",
+      b: "Linus Torvalds",
+      c: "Alan Turing"
+    },
+    correctAnswer: "c"
   }
 ];
 myQuestions = shuffleArray(myQuestions);
 var finished = false;
 var results = document.getElementById("results");
+var incorrect_ans = document.getElementById("incorrect_ans");
 var answerrow = document.getElementById("ans");
 var correct = 0;
 var incorrect = 0;
