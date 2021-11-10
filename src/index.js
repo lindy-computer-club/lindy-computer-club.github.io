@@ -123,7 +123,7 @@ var myQuestions = [
     answers: {
       a: "Understand",
       b: "Hexcells",
-      c: "Brainf--k"
+      c: "Dlang"
     },
     correctAnswer: "c"
   },
