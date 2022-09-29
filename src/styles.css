@@ -43,8 +43,10 @@ body {
 .correct {
   animation-duration: 1s;
   animation-name: correct;
+  animation-iteration-count: infinite;
 }
 .incorrect {
   animation-duration: 1s;
   animation-name: incorrect;
+  animation-iteration-count: infinite;
 }
